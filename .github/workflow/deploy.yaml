@@ -1,0 +1,45 @@
+name: Deploy front-page to Cloudflare Pages
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - last-hope/**
+
+  pull_request:
+    branches:
+      - main
+    paths:
+      - last-hope/**
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: "18"
+
+      - name: Install dependencies
+        working-directory: ./last-hope
+        run: npm install
+
+      - name: Build
+        working-directory: ./last-hope
+        run: npx nuxt generate
+
+      - name: Install Wrangler
+        run: npm install -g wrangler
+
+      - name: Deploy to Cloudflare Pages
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUD_FLARE_DEPLOY_API_TOKEN }}
+          accountId: ${{ secrets.CLOUD_FLARE_DEPLOY_ACCOUNT_ID }}
+          command: pages deploy ./last-hope/dist --project-name=last-hope --commit-dirty=true
+          quiet: false
