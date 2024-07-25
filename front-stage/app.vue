@@ -2,7 +2,10 @@
   <div class="body">
     <h1>Select Time Periods</h1>
     <div class="users">
-      <label> <input type="radio" value="Ria" v-model="user" /> Ria </label>
+      <label>
+        <input type="radio" value="Ria" v-model="user" @change="checkUser" />
+        Ria
+      </label>
       <label>
         <input type="radio" value="Dennis" v-model="user" /> Dennis
       </label>
@@ -19,15 +22,22 @@
       </div>
     </div>
     <div class="confirm">
-      <button class="button-27" role="button">confirm changes</button>
+      <button
+        class="button-27"
+        :disabled="!confirmEnabled"
+        @click="confirmChanges"
+      >
+        Confirm Changes
+      </button>
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, watch } from "vue";
 
 const user = ref("");
+const confirmEnabled = ref(false);
 const selections = ref({
   Ria: {},
   Dennis: {},
@@ -62,6 +72,27 @@ const getClass = (day, period) => {
   if (riaSelected) return "pink";
   if (dennisSelected) return "yellow";
   return "";
+};
+
+const checkUser = () => {
+  if (user.value === "Ria") {
+    const input = window.prompt(
+      "Please enter your Facebook username (Capitalization and spaces must be the same)"
+    );
+    if (input === "Ria Chiu") {
+      confirmEnabled.value = true;
+      window.alert("Success");
+    } else {
+      confirmEnabled.value = false;
+      window.alert("Error");
+    }
+  } else {
+    confirmEnabled.value = true;
+  }
+};
+
+const confirmChanges = () => {
+  // Add logic to handle confirmation of changes
 };
 </script>
 

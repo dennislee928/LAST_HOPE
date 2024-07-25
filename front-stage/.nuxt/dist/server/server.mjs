@@ -1,1 +1,1 @@
-export { default } from "file:///Users/lipeichen/Desktop/LAST_HOPE/node_modules/@nuxt/vite-builder/dist/runtime/vite-node.mjs"
+export { default } from "file:///Users/lipeichen/Desktop/LAST_HOPE/front-stage/node_modules/@nuxt/vite-builder/dist/runtime/vite-node.mjs"
