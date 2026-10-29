@@ -29,6 +29,7 @@
     "browserslist": "^4.28.7",
     "postcss": "^8.5.23",
     "ws": "^8.21.0",
-    "@vue/server-renderer": "^3.5.42"
+    "@vue/server-renderer": "^3.5.42",
+    "source-map-js": "^1.2.2"
   }
 }
