@@ -12,5 +12,8 @@
   "dependencies": {
     "nuxt": "^4.2.2",
     "vue": "3.5.20"
+  },
+  "overrides": {
+    "seroval": "^1.6.8"
   }
 }
