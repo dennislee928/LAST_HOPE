@@ -32,6 +32,7 @@
     "@vue/server-renderer": "^3.5.42",
     "source-map-js": "^1.2.2",
     "@nuxt/nitro-server": "^4.6.2",
-    "unhead": "^2.1.13"
+    "unhead": "^2.1.13",
+    "nitropack": "^2.13.4"
   }
 }
