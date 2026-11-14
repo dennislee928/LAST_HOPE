@@ -43,6 +43,7 @@
     "node-forge": "^1.4.3",
     "@nuxt/vite-builder": "^4.6.3",
     "glob": "^14.0.2",
-    "minimatch": "^11.0.1"
+    "minimatch": "^11.0.1",
+    "@nuxt/schema": "^4.6.4"
   }
 }
